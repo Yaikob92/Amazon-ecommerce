@@ -6,7 +6,7 @@ import {
   deliveryOptions,
   getDeliveryOption,
 } from "../../data/deliveryOptions.js";
-
+import { renderPaymentSummary } from "./paymentSummery.js";
 export function renderOrderSummary() {
   let cartSummaryHMTL = "";
   cart.forEach((cartItem) => {
@@ -97,13 +97,15 @@ export function renderOrderSummary() {
         `.js-cart-item-container-${productId}`
       );
       container.remove();
+      renderPaymentSummary();
     });
   });
   document.querySelectorAll(".js-delivery-option").forEach((element) => {
     element.addEventListener("click", () => {
       const { productId, deliveryOptionId } = element.dataset;
       updateDeliveryOption(productId, deliveryOptionId);
-      renderOrderSummary();
+      renderPaymentSummary();
+      renderPaymentSummary();
     });
   });
 }
