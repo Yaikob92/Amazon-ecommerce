@@ -30,7 +30,7 @@ export function addToCart(productId) {
     cart.push({
       productId: productId,
       quantity: 1,
-      deliveryOption: 1,
+      deliveryOption: "1",
     });
   }
   saveToStorage();
